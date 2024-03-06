@@ -21,7 +21,7 @@ public class API_JavaClass {
 
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            
+//            System.out.println()
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(response.body());
             JSONArray movesArray=(JSONArray)jsonObject.get("moves");
@@ -34,11 +34,13 @@ public class API_JavaClass {
             System.out.println("base_experience: " + base_experience);
             System.out.println("Weight: " + weight);
             System.out.println("Height: " + height);
+            System.out.println("Moves of Pokemon.");
             if(movesArray.size()>=4) {
             	for(int i=0;i<4;i++) {
             		JSONObject mo=(JSONObject) movesArray.get(i);
-            		String name=(String)((JSONObject) mo.get("move")).get("name");
-                	System.out.println("Move "+(i+1)+" : "+name);
+            		String movename=(String)((JSONObject) mo.get("move")).get("name");
+            		
+                	System.out.println(movename);
             	}
             }
 
